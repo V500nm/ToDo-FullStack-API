@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="sideSection">
+      <div class="userName"><h1>Adnan</h1></div>
+      <hr>
+      <ul>
+        <li><img src="../assets/images/day.png"> My Day</li>
+        <li><img src="../assets/images/All.png"> All</li>
+        <li><img src="../assets/images/important.png"> Important</li>
+        <li><img src="../assets/images/pending.png"> Pending</li>
+        <li><img src="../assets/images/Done.png"> Done</li>
+      </ul>
+  </div>
+  <div class="main">
+      <div class="top">
+          <h1>ToDo Tasks</h1><hr>
+      </div>
+      <div class="TaskTable">
+
+        <div class="list" *ngFor="let taskList of toDo">
+              <div class="srNo">
+                <p id="id"><img src="https://img.icons8.com/external-others-pike-picture/40/000000/external-Bullets-bullet-others-pike-picture-9.png"/></p>
+              </div>
+              <div class="topic">
+                <p id="topic">{{ taskList.topic }}</p>
+              </div>
+              <div class="description">
+                <p id="description">{{ taskList.description }}</p>
+              </div>
+              <div class="btnGroup">
+                <div class="crud1">
+                  <a id="update" (click)="recoverTask(taskList)">update</a>
+                </div>
+                <div class="crud2">
+                  <a id="done" (click)="deleteTask(taskList.id)">Done</a>
+              </div>
+            </div>
+        </div>
+
+      </div>
+      <div class="footer">
+        <div class="heading">
+          <h1>Add a Task</h1>
+        </div>
+       
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <div class="inputs">
+          <div>
+            <input class="Tinput" type="text" name="Topic" placeholder="Topic" [(ngModel)]="tasks.topic">
+          </div>
+          <div>
+            <input class="Dinput" type="text" name="Description" placeholder="Description" [(ngModel)]="tasks.description">
+          </div>
+          <div>
+             <button class="btnSpan">Add</button>
+          </div>
+        </div>
+      </form>
+      </div>
+   
+    </div>
+</div>
