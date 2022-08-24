@@ -9,6 +9,7 @@ import { Task } from './models/tasks.model';
 })
 export class AppComponent implements OnInit{
   title = 'FStoDo';
+  updateButton=false;
   toDo: Task[]=[];
   tasks:Task={
     id:'',
@@ -20,7 +21,13 @@ export class AppComponent implements OnInit{
     
  }
   ngOnInit(): void {
-    this.getAllTasks();
+    // this.getAllTasks();
+    this.tasksService.getAllTasks()
+    .subscribe( Response=>{
+      this.toDo = Response;
+      
+      }
+    )
   }
   getAllTasks(){
     this.tasksService.getAllTasks()
@@ -56,6 +63,7 @@ export class AppComponent implements OnInit{
     )
   }
   recoverTask(tasks:Task){
+    this.updateButton=true;
     this.tasks=tasks;
   }
   updateTask(tasks:Task){
@@ -68,6 +76,7 @@ export class AppComponent implements OnInit{
           topic:'',
           description:''
         }
+        this.updateButton=false;
       }
     )
   }

@@ -51,7 +51,8 @@
             <input class="Dinput" type="text" name="Description" placeholder="Description" [(ngModel)]="tasks.description">
           </div>
           <div>
-             <button class="btnSpan">Add</button>
+             <button class="btnSpan" *ngIf="!updateButton">Add</button>
+             <button class="btnSpan" *ngIf="updateButton">Update</button>
           </div>
         </div>
       </form>
